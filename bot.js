@@ -1,6 +1,5 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
-var prefix = "#";
 
 client.on('ready', () => {
    console.log(`----------------`);
@@ -14,7 +13,8 @@ client.user.setStatus("dnd")
 });
 
 Client.on("message", message => {
-    
+    var prefix = "#";
+
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix - "bc")) {
