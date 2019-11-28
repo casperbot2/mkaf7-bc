@@ -1,5 +1,20 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+var prefix = "#";
+client.on("message", message => {
+
+            if (message.content.startsWith(prefix + "bc")) {
+                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+ m.send(`${argresult}\n ${m}`);
+})
+ message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
+ message.delete(); 
+};     
+});
+
 
 client.on('ready', () => {
    console.log(`----------------`);
@@ -12,27 +27,5 @@ client.user.setGame(`I am Abo N3al.`,"http://twitch.tv/S-F")
 client.user.setStatus("dnd")
 });
 
-Client.on("message", message => {
-    var prefix = "#";
-
- 
-            var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith(prefix - "bc")) {
-                         if (!message.member.hasPermission("ADMINISTRATOR"))  return;
- if (!args[1]) {
-                                let embed3 = new Discord.RichEmbed()
-                                .setDescription(":white_check_mark: | تم ارسال للكل رساله فارغه")
-                                .setColor("#FF0000")
-                                message.channel.sendEmbed(embed3);
-                            } else {
-
-                            let embed4 = new Discord.RichEmbed()
-                                                            .setDescription(':white_check_mark: | تم ارسال للكل الرساله !')
-                                                            .setColor("#008000")
-                                message.channel.sendEmbed(embed4);
-                                                      message.delete();
-                            }
-                          }
-});
 
 client.login(process.env.TOKEN);
