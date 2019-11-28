@@ -14,7 +14,7 @@ client.user.setStatus("dnd")
 });
 
 Client.on("message", message => {
-    var prefix = "$";
+    
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix - "bc")) {
